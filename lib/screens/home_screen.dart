@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   child: SizedBox(
                     child: FadeInImage(
+                      height: 280,
                       image: NetworkImage(
                         "https://facultades.unab.cl/cienciasdelavida/wp-content/uploads/2022/02/Medicina-Veterinaria.webp",
                       ),
@@ -68,10 +69,42 @@ class HomeScreen extends StatelessWidget {
                 Subtitle(titulo: "Top de productos"),
                 Column(
                   children: [
-                    _TopProductos(imagen: "assets/productos/pupc5.jpg"),
-                    _TopProductos(imagen: "assets/productos/sm19.jpg"),
-                    _TopProductos(imagen: "assets/productos/pubs4.jpg"),
-                    _TopProductos(imagen: "assets/productos/t211.jpg"),
+                    _TopProductos(
+                      nombre: "NutriBites Beef Sticks",
+                      descripcion:
+                          "Magna do reprehenderit ipsum ad cupidatat esse excepteur ullamco laborum consequat aliquip.",
+                      precio: "13.20",
+                      imagen: "assets/productos/pupc5.jpg",
+                      favoritos: "50",
+                      calificacion: "3",
+                    ),
+                    _TopProductos(
+                      nombre: "Fórmula Natural Fresh Meat - Gatos Senior",
+                      descripcion:
+                          "Aliqua quis commodo occaecat aliquip aliquip cupidatat voluptate dolore incididunt exercitation ipsum.",
+                      precio: "43.00",
+                      imagen: "assets/productos/sm19.jpg",
+                      favoritos: "150",
+                      calificacion: "2",
+                    ),
+                    _TopProductos(
+                      nombre: "Ultrametrin 600",
+                      descripcion:
+                          "Duis labore elit do aliquip consequat proident irure culpa labore labore.",
+                      precio: "7.60",
+                      imagen: "assets/productos/pubs4.jpg",
+                      favoritos: "60",
+                      calificacion: "4",
+                    ),
+                    _TopProductos(
+                      nombre: "Suralan X-Large (40 - 60kg)",
+                      descripcion:
+                          "Sunt consequat sit tempor cupidatat nostrud incididunt ipsum non.",
+                      precio: "85.90",
+                      imagen: "assets/productos/t211.jpg",
+                      favoritos: "200",
+                      calificacion: "5",
+                    ),
                   ],
                 ),
               ],
@@ -85,8 +118,21 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _TopProductos extends StatelessWidget {
+  final String nombre;
+  final String descripcion;
   final String imagen;
-  const _TopProductos({super.key, required this.imagen});
+  final String precio;
+  final String favoritos;
+  final String calificacion;
+
+  const _TopProductos({
+    required this.imagen,
+    required this.nombre,
+    required this.descripcion,
+    required this.precio,
+    required this.favoritos,
+    required this.calificacion,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -96,14 +142,36 @@ class _TopProductos extends StatelessWidget {
         children: [
           Row(
             children: [
-              Image(image: AssetImage(this.imagen), width: 80),
-              Column(
-                children: [
-                  Text("NutriBites Beef Sticks", textAlign: TextAlign.start),
-                  Text("Premium Fresh Natural Pet Treats"),
-                  Text("13.2"),
-                ],
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image(image: AssetImage(imagen), width: 80),
               ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      nombre,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.azul900,
+                      ),
+                    ),
+                    Text(descripcion),
+                    Text(precio, style: TextStyle(color: AppTheme.azul800)),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(favoritos, style: TextStyle(color: AppTheme.azul700)),
+              Icon(Icons.favorite, color: AppTheme.azul700),
+              const SizedBox(width: 5),
+              Text(calificacion, style: TextStyle(color: AppTheme.azul800)),
+              Icon(Icons.star, color: AppTheme.azul800),
             ],
           ),
         ],
