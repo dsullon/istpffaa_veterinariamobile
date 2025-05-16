@@ -193,9 +193,9 @@ class _Servicio extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          Image(image: AssetImage(this.imagen), fit: BoxFit.cover),
+          Image(image: AssetImage(imagen), fit: BoxFit.cover),
           SizedBox(height: 5),
-          Text(this.titulo),
+          Text(titulo),
         ],
       ),
     );

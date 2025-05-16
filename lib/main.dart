@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:veterinaria/routes/app_routes.dart';
+import 'package:veterinaria/screens/account_screen.dart';
 import 'package:veterinaria/screens/home_screen.dart';
+import 'package:veterinaria/screens/user/profile_screen.dart';
 import 'package:veterinaria/themes/app_theme.dart';
 
 void main() => runApp(const MyApp());
@@ -12,8 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Veterinaria App',
-      home: HomeScreen(),
       theme: AppTheme.themeData,
+      initialRoute: "home",
+      routes: AppRoutes.getRoutes(),
     );
   }
 }

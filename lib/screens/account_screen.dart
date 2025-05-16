@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:veterinaria/routes/app_routes.dart';
 import 'package:veterinaria/themes/app_theme.dart';
 import 'package:veterinaria/widgets/custom_bottom_navigation.dart';
 
@@ -7,6 +8,10 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var menu = AppRoutes.menuOptions;
+    print("Menu de usuario");
+    print(menu);
+    print("**********");
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -41,16 +46,32 @@ class AccountScreen extends StatelessWidget {
                     leading: Icon(Icons.account_circle),
                     title: Text("Mis datos"),
                     trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.pushNamed(context, "profile");
+                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.shop),
                     title: Text("Mis compras"),
                     trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.pushNamed(context, "myorders");
+                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.map),
                     title: Text("Mis direcciones"),
                     trailing: Icon(Icons.arrow_forward),
+                    onTap: () {
+                      Navigator.pushNamed(context, "myaddress");
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.access_time_filled),
+                    title: Text("Reportes"),
+                    onTap: () {
+                      Navigator.pushNamed(context, "mycomplaints");
+                    },
                   ),
                 ],
               ),

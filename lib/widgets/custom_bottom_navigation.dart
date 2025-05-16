@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:veterinaria/screens/account_screen.dart';
-import 'package:veterinaria/screens/home_screen.dart';
 
 class CustomBottomNavigation extends StatelessWidget {
   const CustomBottomNavigation({super.key});
@@ -10,17 +8,12 @@ class CustomBottomNavigation extends StatelessWidget {
     void onItemTap(int idx) {
       switch (idx) {
         case 0:
-          var route = MaterialPageRoute(
-            builder: (context) => const HomeScreen(),
-          );
-          Navigator.push(context, route);
+          Navigator.pushReplacementNamed(context, "home");
         default:
-          var route = MaterialPageRoute(
-            builder: (context) => const AccountScreen(),
-          );
-          Navigator.push(context, route);
+          Navigator.pushReplacementNamed(context, "account");
       }
     }
+
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Inicio"),
