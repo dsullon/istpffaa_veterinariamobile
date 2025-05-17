@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 class MenuOption {
   final String ruta;
-  final IconData icono;
+  final Icon icono;
   final String nombre;
   final Widget screen;
 
@@ -14,5 +14,5 @@ class MenuOption {
   });
 
   @override
-  String toString() => this.nombre;
+  String toString() => nombre;
 }

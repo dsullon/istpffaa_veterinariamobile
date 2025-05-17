@@ -16,5 +16,14 @@ class AppTheme {
       selectedItemColor: blanco,
       unselectedItemColor: blanco,
     ),
+    appBarTheme: AppBarTheme(color: azul950, foregroundColor: blanco),
+    listTileTheme: ListTileThemeData(
+      iconColor: azul900,
+      titleTextStyle: TextStyle(
+        color: azul950,
+        fontWeight: FontWeight.bold,
+        fontSize: 20,
+      ),
+    ),
   );
 }

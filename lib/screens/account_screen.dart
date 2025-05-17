@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:veterinaria/routes/app_routes.dart';
+import 'package:veterinaria/routes/user_routes.dart';
 import 'package:veterinaria/themes/app_theme.dart';
 import 'package:veterinaria/widgets/custom_bottom_navigation.dart';
 
@@ -8,10 +8,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var menu = AppRoutes.menuOptions;
-    print("Menu de usuario");
-    print(menu);
-    print("**********");
+    var menu = UserRoutes.menuOptions;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -39,41 +36,18 @@ class AccountScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(10),
-                children: [
-                  ListTile(
-                    leading: Icon(Icons.account_circle),
-                    title: Text("Mis datos"),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {
-                      Navigator.pushNamed(context, "profile");
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.shop),
-                    title: Text("Mis compras"),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {
-                      Navigator.pushNamed(context, "myorders");
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.map),
-                    title: Text("Mis direcciones"),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {
-                      Navigator.pushNamed(context, "myaddress");
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.access_time_filled),
-                    title: Text("Reportes"),
-                    onTap: () {
-                      Navigator.pushNamed(context, "mycomplaints");
-                    },
-                  ),
-                ],
+              child: ListView.separated(
+                itemBuilder:
+                    (context, index) => ListTile(
+                      leading: menu[index].icono,
+                      title: Text(menu[index].nombre),
+                      trailing: const Icon(Icons.arrow_circle_right),
+                      onTap: () {
+                        Navigator.pushNamed(context, menu[index].ruta);
+                      },
+                    ),
+                separatorBuilder: (_, _) => const Divider(),
+                itemCount: menu.length,
               ),
             ),
           ],
